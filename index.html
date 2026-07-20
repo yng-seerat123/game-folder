@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameX Pro - Tournament Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="showSection('home')">🎮 GameX Pro</div>
+            <div class="nav-links">
+                <button class="nav-btn active" data-section="home" onclick="showSection('home')">🏠 Home</button>
+                <button class="nav-btn" data-section="register" onclick="showSection('register')">📝 Register</button>
+                <button class="nav-btn" data-section="players" onclick="showSection('players')">👥 Players</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HOME SECTION ========== -->
+    <section id="home" class="section active">
+        <div class="hero game-hero">
+            <div class="hero-badge">🏆 SEASON 2026</div>
+            <h1>GameX Pro Tournament</h1>
+            <p>The ultimate gaming championship. Compete with the best, win epic prizes!</p>
+            <div class="hero-actions">
+                <button class="hero-btn primary" onclick="showSection('register')">Register Now 🎯</button>
+                <button class="hero-btn secondary" onclick="document.getElementById('info').scrollIntoView({behavior:'smooth'})">Learn More ⬇️</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-box"><span class="stat-number" id="registered-count">0</span><span class="stat-label">Players Registered</span></div>
+                <div class="stat-box"><span class="stat-number">PKR 5,000</span><span class="stat-label">Prize Pool</span></div>
+                <div class="stat-box"><span class="stat-number">3</span><span class="stat-label">Game Titles</span></div>
+            </div>
+        </div>
+
+        <div class="container" id="info">
+            <h2 class="section-title">🎯 Tournament Details</h2>
+            <div class="info-grid">
+                <div class="info-card"><div class="info-icon">📅</div><h3>Date & Time</h3><p>August 15-20, 2026</p><p class="info-sub">10:00 AM - 8:00 PM Daily</p></div>
+                <div class="info-card"><div class="info-icon">📍</div><h3>Venue</h3><p>GameX Arena Complex</p><p class="info-sub">123 Esports Boulevard, NY</p></div>
+                <div class="info-card"><div class="info-icon">💰</div><h3>Entry Fee</h3><p>Free Registration</p><p class="info-sub">Open to all gamers!</p></div>
+                <div class="info-card"><div class="info-icon">🏆</div><h3>Prize Pool</h3><p>PKR 5,000 Total</p><p class="info-sub">+ Gaming Gear & Trophies</p></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2 class="section-title">🎮 Featured Games</h2>
+            <div class="games-grid">
+                <div class="game-card"><div class="game-img" style="background:linear-gradient(135deg,#ff6b6b,#ee5a24);">🔫</div><div class="game-info"><h3>Strike Force</h3><p>5v5 Tactical Shooter • PC</p><span class="game-prize">🥇 PKR 2,000</span></div></div>
+                <div class="game-card"><div class="game-img" style="background:linear-gradient(135deg,#6c5ce7,#a29bfe);">⚔️</div><div class="game-info"><h3>Battle Arena</h3><p>1v1 Fighting • Console/PC</p><span class="game-prize">🥇 PKR 1,500</span></div></div>
+                <div class="game-card"><div class="game-img" style="background:linear-gradient(135deg,#00b894,#55efc4);">🏎️</div><div class="game-info"><h3>Turbo Racing</h3><p>Time Trial • All Platforms</p><span class="game-prize">🥇 PKR 1,500</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== REGISTRATION SECTION ========== -->
+    <section id="register" class="section">
+        <div class="register-hero"><h1>📝 Player Registration</h1><p>Fill in your details to join the tournament!</p></div>
+        <div class="container">
+            <div class="register-layout">
+                <div class="register-form-wrapper">
+                    <div class="form-steps">
+                        <div class="step active" id="step-1-indicator"><div class="step-number">1</div><span>Personal Info</span></div>
+                        <div class="step-line"></div>
+                        <div class="step" id="step-2-indicator"><div class="step-number">2</div><span>Game Selection</span></div>
+                        <div class="step-line"></div>
+                        <div class="step" id="step-3-indicator"><div class="step-number">3</div><span>Confirmation</span></div>
+                    </div>
+                    <form id="registration-form" class="register-form" onsubmit="submitRegistration(event)">
+                        <div class="form-step active" id="form-step-1">
+                            <div class="form-group"><label>Full Name *</label><input type="text" id="player-name" placeholder="Enter your full name" required></div>
+                            <div class="form-group"><label>Gaming ID / Username *</label><input type="text" id="player-id" placeholder="e.g. ProGamerX99" required></div>
+                            <div class="form-row">
+                                <div class="form-group"><label>Contact Number *</label><input type="tel" id="player-phone" placeholder="+1 (555) 000-0000" required></div>
+                                <div class="form-group"><label>Email Address</label><input type="email" id="player-email" placeholder="gamer@email.com"></div>
+                            </div>
+                            <div class="form-group"><label>Date of Birth</label><input type="date" id="player-dob"></div>
+                            <button type="button" class="form-next-btn" onclick="nextStep(2)">Next: Game Selection →</button>
+                        </div>
+                        <div class="form-step" id="form-step-2">
+                            <h3>Select Your Game(s)</h3>
+                            <div class="game-select-grid">
+                                <label class="game-select-card"><input type="checkbox" name="game" value="Strike Force"><div class="game-select-content"><span class="game-select-emoji">🔫</span><strong>Strike Force</strong><span>5v5 Tactical Shooter</span></div></label>
+                                <label class="game-select-card"><input type="checkbox" name="game" value="Battle Arena"><div class="game-select-content"><span class="game-select-emoji">⚔️</span><strong>Battle Arena</strong><span>1v1 Fighting</span></div></label>
+                                <label class="game-select-card"><input type="checkbox" name="game" value="Turbo Racing"><div class="game-select-content"><span class="game-select-emoji">🏎️</span><strong>Turbo Racing</strong><span>Time Trial</span></div></label>
+                            </div>
+                            <div class="form-group"><label>Platform</label><select id="player-platform"><option>PC</option><option>PlayStation 5</option><option>Xbox Series X</option><option>Nintendo Switch</option><option>Mobile</option></select></div>
+                            <div class="form-group"><label>Discord Username</label><input type="text" id="player-discord" placeholder="username#0000"></div>
+                            <div class="form-step-buttons"><button type="button" class="form-back-btn" onclick="nextStep(1)">← Back</button><button type="button" class="form-next-btn" onclick="nextStep(3)">Next: Confirmation →</button></div>
+                        </div>
+                        <div class="form-step" id="form-step-3">
+                            <div class="confirmation-box">
+                                <div class="confirm-icon">✅</div><h3>Confirm Your Registration</h3><p>Please review your details before submitting:</p>
+                                <div class="confirm-details">
+                                    <div class="confirm-row"><span>Name:</span><strong id="confirm-name">-</strong></div>
+                                    <div class="confirm-row"><span>Gaming ID:</span><strong id="confirm-id">-</strong></div>
+                                    <div class="confirm-row"><span>Phone:</span><strong id="confirm-phone">-</strong></div>
+                                    <div class="confirm-row"><span>Email:</span><strong id="confirm-email">-</strong></div>
+                                    <div class="confirm-row"><span>Games:</span><strong id="confirm-games">-</strong></div>
+                                    <div class="confirm-row"><span>Platform:</span><strong id="confirm-platform">-</strong></div>
+                                </div>
+                                <label class="confirm-checkbox"><input type="checkbox" id="agree-terms" required> I agree to the tournament rules and code of conduct</label>
+                            </div>
+                            <div class="form-step-buttons"><button type="button" class="form-back-btn" onclick="nextStep(2)">← Back</button><button type="submit" class="form-submit-btn">🎯 Confirm & Register</button></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="register-sidebar">
+                    <div class="sidebar-card"><h3>📋 Registration Rules</h3><ul><li>Must be 13+ years old</li><li>One registration per player</li><li>Valid ID required at check-in</li><li>Registration closes Aug 10, 2026</li><li>Late entries not accepted</li></ul></div>
+                    <div class="sidebar-card"><h3>❓ Need Help?</h3><p>Contact our support team:</p><p class="support-contact">📧 support@gamexpro.com</p><p class="support-contact">📱 +1 (555) 987-6543</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PLAYERS SECTION ========== -->
+    <section id="players" class="section">
+        <div class="register-hero" style="background:linear-gradient(135deg,#2d3436,#636e72);"><h1>👥 Registered Players</h1><p>See who's already signed up for the tournament!</p></div>
+        <div class="container">
+            <div class="players-toolbar">
+                <div class="players-search"><input type="text" id="player-search" placeholder="🔍 Search by name or ID..." oninput="filterPlayers()"></div>
+                <div class="players-stats-bar"><strong>Total Registered: <span id="total-players">0</span></strong></div>
+            </div>
+            <div class="players-grid" id="players-grid"><div class="no-players"><div class="no-players-icon">🎮</div><p>No players registered yet. Be the first!</p><button class="hero-btn primary" onclick="showSection('register')">Register Now</button></div></div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="success-overlay">
+        <div class="success-modal">
+            <div class="success-animation">🎉</div>
+            <h2>Registration Successful!</h2>
+            <p>You're all set, <strong id="success-name"></strong>!</p>
+            <p>Your Player ID: <code id="success-id"></code></p>
+            <div class="success-details"><p>📅 Check-in: Aug 15, 9:00 AM</p><p>📍 GameX Arena Complex</p></div>
+            <button class="form-submit-btn" onclick="closeSuccess()">Got It! 🎯</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div><h3>🎮 GameX Pro</h3><p>The ultimate esports tournament platform.</p></div>
+            <div><h4>Quick Links</h4><ul><li onclick="showSection('home')">🏠 Home</li><li onclick="showSection('register')">📝 Register</li><li onclick="showSection('players')">👥 Players</li></ul></div>
+            <div><h4>Follow Us</h4><div class="social-icons"><span>🎮</span><span>📺</span><span>🐦</span><span>💬</span></div></div>
+        </div>
+        <div class="footer-bottom">© 2026 GameX Pro. All rights reserved.</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
